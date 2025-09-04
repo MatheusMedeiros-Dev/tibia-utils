@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  /* -- Geral ------------------------------------------------------------ */
+  --color-primary-text: #f8f9fa; /* texto principal */
+  --color-secondary-text: #242424; /* texto secundário */
+  --color-primary-divider: #c0c0c0; /* linha divisória horizontal */
+  --color-secondary-divider: #6a728280; /* linha divisória vertical */
+  --color-surface-primary: #0b2c3a; /* background do navbar e footer */
+  --color-card-bg: #8200db; /* background do card de destaque */
+  --color-overlay-bg: #000000bf; /* background dos componentes */
+  --color-content-bg: #fffbeb; /* conteúdo do main */
+  --color-tag-bg: #2e2e2e; /* background da tag */
+  --color-tag-text: #9ed0ff; /* texto da tag */
+  --color-username: #ffc107; /* texto do nome de usuário */
+  --color-create-at: #b0b0b0; /* texto da data de criação */
+  --color-create-at-dashboard: #999999; /* texto da data de criação no dashboard */
+  --color-modal-bg: rgb(0, 0, 0, 0.7);
+
+  /* -- Botões ------------------------------------------------------------ */
+  /* Estados padrão e hover */
+  --color-btn-bg: #8200db; /* background do botão primário */
+  --color-btn-hover: #c57cf0; /* hover do botão primário */
+  --color-btn-active-bg: #00a8a8; /* background do botão ativo ou selecionado */
+
+  /* Estado de alerta */
+  --color-btn-danger: #d62839; /* background do botão para ação crítica */
+  --color-btn-danger-hover: #b71d2e; /* hover do botão para ação crítica */
+
+  /* Busca */
+  --color-btn-search-bg: #8200db; /* background do botão de busca */
+  --color-search-hover-bg: #c57cf0; /* hover do botão de busca */
+
+  /* -- Inputs e Formulários ----------------------------------------------- */
+  --color-input-label: #fefcf5; /* texto da label de input */
+  --color-input-bg: #1e2a38; /* background do campo de input */
+  --color-input-border: #2f3e4e; /* borda do campo de input */
+  --color-input-placeholder: #99a1af; /* texto do placeholder de input */
+
+  /* -- Erros -------------------------------------------------------------- */
+  --color-error-bg: #ffb900; /* background da mensagem de erro */
+  --color-error-text: #e60023; /* texto de erro */
+
+  /* -- Animações ---------------------------------------------------------- */
+  --animate-blink: blink 1.5s infinite; /* efeito de piscar para alertas */
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
