@@ -10,6 +10,7 @@ import SearchResults from "../pages/SearchResults";
 import EditPost from "../pages/EditPost";
 import ViewPost from "../pages/ViewPost";
 import ErrorPage from "../pages/ErrorPage";
+import LootSplit from "../pages/LootSplit";
 const AppRoutes = () => {
   const { user } = useAuthValue();
   return (
@@ -20,6 +21,7 @@ const AppRoutes = () => {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchResults />} />
           <Route path="/error" element={<ErrorPage />} />
+          <Route path="/loot-split" element={<LootSplit />} />
 
           {/* Rotas privadas */}
           <Route

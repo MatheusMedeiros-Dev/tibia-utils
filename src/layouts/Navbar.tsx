@@ -1,15 +1,14 @@
-import { useAuthValue } from "../context/AuthContext";
 import AppButton from "../components/AppButton";
 import tibiaIcon from "../assets/icon.png";
-import LineDivider from "../components/LineDivider";
+
 import { useEffect, useRef, useState } from "react";
-import Modal from "../components/Modal";
+
 import Dropdown from "../components/Dropdown";
 import { FaUserCircle } from "react-icons/fa";
 import { useAuthentication } from "../hooks/useAuthentication";
+import Modal from "../components/Modal";
 
 const Navbar = () => {
-  const { user } = useAuthValue();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -18,6 +17,7 @@ const Navbar = () => {
   const handleModalOpen = () => {
     setModalIsOpen(true);
     setDropdownOpen(false);
+    console.log("x");
   };
   const handleModalClose = () => setModalIsOpen(false);
   const handleModalConfirm = () => {
@@ -53,66 +53,25 @@ const Navbar = () => {
               />
             </li>
           </div>
-          <FaUserCircle
-            className="sm:hidden text-3xl cursor-pointer"
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-          />
-          <div className="hidden sm:flex">
+          <div className="flex">
+            <AppButton
+              type="navlink"
+              buttonStyle="navbar"
+              to="/loot-split"
+              label="Loot Split"
+            />
+
             <AppButton
               type="navlink"
               buttonStyle="navbar"
               to="/"
-              label="Home"
+              label="Blog"
             />
-
-            {!user && (
-              <div className="flex">
-                <AppButton
-                  type="navlink"
-                  buttonStyle="navbar"
-                  to="/register"
-                  label="Cadastre-se"
-                />
-                <LineDivider direction="vertical" />
-                <AppButton
-                  type="navlink"
-                  buttonStyle="login"
-                  to="/login"
-                  label="Entrar"
-                />
-              </div>
-            )}
-            {user && (
-              <>
-                <AppButton
-                  type="navlink"
-                  buttonStyle="navbar"
-                  to="/posts/create"
-                  label="Criar Post"
-                />
-                <AppButton
-                  type="navlink"
-                  buttonStyle="navbar"
-                  to="/dashboard/posts"
-                  label="Meus Posts"
-                />
-                <LineDivider direction="vertical" />
-                <AppButton
-                  type="button"
-                  buttonStyle="logout"
-                  label="Sair"
-                  onClick={handleModalOpen}
-                />
-                <Modal
-                  modalIsOpen={modalIsOpen}
-                  modalOnClose={handleModalClose}
-                  modalText="Você tem certeza que deseja sair?"
-                  modalOnClickClose={handleModalClose}
-                  modalOnClickConfirm={handleModalConfirm}
-                />
-              </>
-            )}
           </div>
+          <FaUserCircle
+            className="text-3xl cursor-pointer"
+            onClick={() => setDropdownOpen(true)}
+          />
         </ul>
       </nav>
       {dropdownOpen ? (
@@ -127,6 +86,13 @@ const Navbar = () => {
       ) : (
         ""
       )}
+      <Modal
+        modalIsOpen={modalIsOpen}
+        modalOnClose={handleModalClose}
+        modalText="Você tem certeza que deseja sair?"
+        modalOnClickClose={handleModalClose}
+        modalOnClickConfirm={handleModalConfirm}
+      />
     </header>
   );
 };

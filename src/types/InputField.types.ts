@@ -1,6 +1,6 @@
 type inputStyle = "text" | "textarea" | "email" | "password";
 
-type InputStyle = "default" | "search";
+type InputStyle = "default" | "search" | "textarea";
 
 type AutoCompleteOption =
   | "name"

@@ -1,22 +1,14 @@
 import { useAuthValue } from "../context/AuthContext";
-import Modal from "./Modal";
 import AppButton from "./AppButton";
 
 interface Dropdown {
-  onClick?: () => void;
   modalIsOpen: boolean;
   handleModalClose: () => void;
   handleModalConfirm: () => void;
   handleModalOpen: () => void;
 }
 
-const Dropdown = ({
-  onClick,
-  modalIsOpen,
-  handleModalClose,
-  handleModalConfirm,
-  handleModalOpen,
-}: Dropdown) => {
+const Dropdown = ({ handleModalOpen }: Dropdown) => {
   const { user } = useAuthValue();
 
   return (
@@ -26,24 +18,21 @@ const Dropdown = ({
       {!user && (
         <ul className="list-none">
           <div className="flex flex-col p-2 gap-2">
-            <li>
-              <AppButton
-                type="navlink"
-                buttonStyle="navbar"
-                to="/register"
-                label="Cadastre-se"
-                onClick={onClick}
-              />
-            </li>
-            <li className="ml-2">
+            <AppButton
+              type="navlink"
+              buttonStyle="navbar"
+              to="/register"
+              label="Cadastre-se"
+            />
+
+            <div className="ml-2">
               <AppButton
                 type="navlink"
                 buttonStyle="login"
                 to="/login"
                 label="Entrar"
-                onClick={onClick}
               />
-            </li>
+            </div>
           </div>
         </ul>
       )}
@@ -52,25 +41,22 @@ const Dropdown = ({
           <ul className="list-none">
             <div className="flex flex-col gap-1">
               <li className="font-bold">Blog</li>
-              <li>
-                <AppButton
-                  type="navlink"
-                  buttonStyle="navbar"
-                  to="/posts/create"
-                  label="Criar Post"
-                  onClick={onClick}
-                />
-              </li>
-              <li>
-                <AppButton
-                  type="navlink"
-                  buttonStyle="navbar"
-                  to="/dashboard/posts"
-                  label="Meus Posts"
-                  onClick={onClick}
-                />
-              </li>
-              <li className="ml-2">
+
+              <AppButton
+                type="navlink"
+                buttonStyle="navbar"
+                to="/posts/create"
+                label="Criar Post"
+              />
+
+              <AppButton
+                type="navlink"
+                buttonStyle="navbar"
+                to="/dashboard/posts"
+                label="Meus Posts"
+              />
+
+              <div className="ml-2">
                 <AppButton
                   type="button"
                   buttonStyle="logout"
@@ -79,16 +65,7 @@ const Dropdown = ({
                     handleModalOpen();
                   }}
                 />
-              </li>
-              <li>
-                <Modal
-                  modalIsOpen={modalIsOpen}
-                  modalOnClose={handleModalClose}
-                  modalText="Você tem certeza que deseja sair?"
-                  modalOnClickClose={handleModalClose}
-                  modalOnClickConfirm={handleModalConfirm}
-                />
-              </li>
+              </div>
             </div>
           </ul>
         </div>
