@@ -3,7 +3,7 @@ import type { InputFieldProps } from "../types/InputField.types";
 const InputField = ({
   label,
   type = "text",
-  inputStyle,
+  inputStyle = "default",
   name,
   value,
   onChange,
@@ -13,9 +13,11 @@ const InputField = ({
 }: InputFieldProps) => {
   const inputStyleClasses: Record<string, string> = {
     default:
-      "flex bg-input-bg text-primary-text p-1 w-full sm:w-2/3 mb-1 placeholder-input-placeholder indent-1 border border-input-border rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400",
+      "bg-input-bg text-primary-text p-1 w-full sm:w-2/3 mb-1 placeholder-input-placeholder indent-1 border border-input-border rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400",
     search:
       "bg-content-bg h-[26px] sm:h-[30px] w-[300px] mr-[4px] focus:outline-none border border-input-border rounded-md focus:outline-none indent-1 focus:ring-2 focus:ring-cyan-400",
+    textarea:
+      "bg-input-bg text-primary-text p-1 w-full h-80 sm:w-2/3 mb-1 placeholder-input-placeholder indent-1 border border-input-border rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400",
   };
 
   const finalClass = inputStyle

@@ -2,13 +2,22 @@ import AppButton from "./AppButton";
 
 interface BackButtonBarProps {
   to: string;
-  width?: string;
+  backBarStyle?: "toPost";
 }
 
-const BackButtonBar = ({ to, width = "w-2/3" }: BackButtonBarProps) => {
+const BackButtonBar = ({ to, backBarStyle }: BackButtonBarProps) => {
+  const backBarStyleClasses = {
+    default: "w-full sm:w-100 bg-overlay-bg mb-2 rounded-b-lg",
+    toPost: "w-full sm:w-2/3 bg-overlay-bg mb-2 rounded-b-lg",
+  };
+
+  const finalClasse = backBarStyle
+    ? backBarStyleClasses[backBarStyle]
+    : backBarStyleClasses.default;
+
   return (
     <div className="flex justify-center">
-      <div className={`w-full sm:${width} bg-overlay-bg mb-2 rounded-b-lg`}>
+      <div className={finalClasse}>
         <AppButton type="link" label="Voltar" to={to} buttonStyle="backbar" />
       </div>
     </div>

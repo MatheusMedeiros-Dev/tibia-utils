@@ -25,32 +25,34 @@ const Login = () => {
     await login(user);
   };
   return (
-    <FormLayout title="Faça seu login" onSubmit={handleSubmit}>
-      <InputField
-        label="Email:"
-        type="email"
-        name="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Digite seu e-mail"
-        autoComplete="email"
-      />
-      <InputField
-        label="Senha:"
-        type="password"
-        name="senha"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Digite sua senha"
-        autoComplete="current-password"
-      />
-      <AppButton
-        type="submit"
-        label={loading ? "Logando..." : "Logar"}
-        buttonStyle={loading ? "loading" : "default"}
-        error={authError}
-      />
-    </FormLayout>
+    <div className="flex justify-center">
+      <FormLayout title="Faça seu login" onSubmit={handleSubmit}>
+        <InputField
+          label="Email:"
+          type="email"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Digite seu e-mail"
+          autoComplete="email"
+        />
+        <InputField
+          label="Senha:"
+          type="password"
+          name="senha"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Digite sua senha"
+          autoComplete="current-password"
+        />
+        <AppButton
+          type="submit"
+          label={loading ? "Logando..." : "Logar"}
+          buttonStyle={loading ? "loading" : "default"}
+          error={authError}
+        />
+      </FormLayout>
+    </div>
   );
 };
 

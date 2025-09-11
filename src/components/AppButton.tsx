@@ -23,6 +23,7 @@ const AppButton = ({
 
   const buttonStyleClasses: Record<string, string> = {
     default: `${baseClasses} bg-btn-bg hover:bg-btn-hover transition duration-200`,
+    copy: `text-primary-text rounded-lg mb-2.5 p-1 text-sm font-bold bg-btn-bg hover:bg-btn-hover transition duration-200`,
     loading: `${baseClasses} bg-btn-hover animate-blink`,
     loadingDelete: `${baseClasses} bg-btn-danger  animate-blink`,
     delete: `${baseClasses} bg-btn-danger hover:bg-btn-danger-hover cursor-pointer`,

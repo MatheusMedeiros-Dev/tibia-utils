@@ -92,69 +92,71 @@ const EditPost = () => {
     <>
       {post && (
         <>
-          <BackButtonBar to="/dashboard/posts" width="w-1/3" />
-          <FormLayout
-            mode="withBar"
-            title="Editar post"
-            onSubmit={handleRequestSubmit}
-          >
-            <div className="">
-              <InputField
-                label="Título:"
-                name="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="Título"
-                required
-              />
+          <BackButtonBar to="/dashboard/posts" />
+          <div className="flex justify-center">
+            <FormLayout
+              formStyle="withBackBar"
+              title="Editar post"
+              onSubmit={handleRequestSubmit}
+            >
+              <div className="">
+                <InputField
+                  label="Título:"
+                  name="title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="Título"
+                  required
+                />
 
-              <InputField
-                label="Url da imagem:"
-                name="imageUrl"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
-                placeholder="Coloque a URL da imagem"
-                required
-              />
+                <InputField
+                  label="Url da imagem:"
+                  name="imageUrl"
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                  placeholder="Coloque a URL da imagem"
+                  required
+                />
 
-              <div className="w-[100px]">
-                <p className="font-semibold text-primary-text">Preview:</p>
-                <img src={imageUrl || undefined} alt="Preview" />
+                <div className="w-[100px]">
+                  <p className="font-semibold text-primary-text">Preview:</p>
+                  <img src={imageUrl || undefined} alt="Preview" />
+                </div>
+
+                <InputField
+                  label="Conteúdo:"
+                  name="body"
+                  value={body}
+                  onChange={(e) => setBody(e.target.value)}
+                  placeholder="Conteúdo do post"
+                  required
+                />
+
+                <InputField
+                  label="Tags:"
+                  name="tags"
+                  value={tags}
+                  onChange={(e) => setTags(e.target.value)}
+                  placeholder="Insira as tags"
+                  required
+                />
               </div>
-
-              <InputField
-                label="Conteúdo:"
-                name="body"
-                value={body}
-                onChange={(e) => setBody(e.target.value)}
-                placeholder="Conteúdo do post"
-                required
+              <AppButton
+                label={loadingFromUpdate ? "Editando..." : "Editar"}
+                type="submit"
+                buttonStyle={loadingFromUpdate ? "loading" : "submit"}
+                error={formError || errorFromUpdate}
               />
 
-              <InputField
-                label="Tags:"
-                name="tags"
-                value={tags}
-                onChange={(e) => setTags(e.target.value)}
-                placeholder="Insira as tags"
-                required
+              <Modal
+                modalIsOpen={isModalOpen}
+                modalOnClose={handleModalCancel}
+                modalText="Tem certeza que deseja salvar as alterações?"
+                modalOnClickClose={handleModalCancel}
+                modalOnClickConfirm={handleModalConfirm}
               />
-            </div>
-            <AppButton
-              label={loadingFromUpdate ? "Editando..." : "Editar"}
-              type="submit"
-              buttonStyle={loadingFromUpdate ? "loading" : "submit"}
-              error={formError || errorFromUpdate}
-            />
-
-            <Modal
-              modalIsOpen={isModalOpen}
-              modalOnClose={handleModalCancel}
-              modalText="Tem certeza que deseja salvar as alterações?"
-              modalOnClickClose={handleModalCancel}
-              modalOnClickConfirm={handleModalConfirm}
-            />
-          </FormLayout>
+            </FormLayout>
+          </div>
         </>
       )}
     </>

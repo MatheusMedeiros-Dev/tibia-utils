@@ -38,52 +38,54 @@ const Register = () => {
   };
 
   return (
-    <FormLayout title="Criar conta" onSubmit={handleSubmit}>
-      <InputField
-        label="Usuário:"
-        name="displayName"
-        value={displayName}
-        onChange={(e) => setDisplayName(e.target.value)}
-        placeholder="Digite um nome de usuário"
-      />
+    <div className="flex justify-center">
+      <FormLayout title="Criar conta" onSubmit={handleSubmit}>
+        <InputField
+          label="Usuário:"
+          name="displayName"
+          value={displayName}
+          onChange={(e) => setDisplayName(e.target.value)}
+          placeholder="Digite um nome de usuário"
+        />
 
-      <InputField
-        label="Email:"
-        type="email"
-        name="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Digite seu e-mail"
-        autoComplete="email"
-      />
+        <InputField
+          label="Email:"
+          type="email"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Digite seu e-mail"
+          autoComplete="email"
+        />
 
-      <InputField
-        label="Senha:"
-        type="password"
-        name="senha"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Digite sua senha"
-        autoComplete="current-password"
-      />
+        <InputField
+          label="Senha:"
+          type="password"
+          name="senha"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Digite sua senha"
+          autoComplete="current-password"
+        />
 
-      <InputField
-        label="Confirme sua senha:"
-        type="password"
-        name="confirmPassword"
-        value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
-        placeholder="Confirme sua senha"
-        autoComplete="current-password"
-      />
+        <InputField
+          label="Confirme sua senha:"
+          type="password"
+          name="confirmPassword"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="Confirme sua senha"
+          autoComplete="current-password"
+        />
 
-      <AppButton
-        label={loading ? "Criando..." : "Criar"}
-        type="submit"
-        buttonStyle={loading ? "loading" : "default"}
-        error={formError || authError}
-      />
-    </FormLayout>
+        <AppButton
+          label={loading ? "Criando..." : "Criar"}
+          type="submit"
+          buttonStyle={loading ? "loading" : "default"}
+          error={formError || authError}
+        />
+      </FormLayout>
+    </div>
   );
 };
 

@@ -23,7 +23,7 @@ const ViewPost = () => {
     <>
       {post && (
         <>
-          <BackButtonBar to="/dashboard/posts" />
+          <BackButtonBar to="/dashboard/posts" backBarStyle="toPost" />
 
           <PostLayout
             postId={post.postId}
