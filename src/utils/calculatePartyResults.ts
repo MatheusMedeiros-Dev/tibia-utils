@@ -8,6 +8,36 @@ export type Transfer = {
   transfer: string;
   transferMessage: string;
 };
+export const defaultPartyHunt = `Session data: From 2025-08-14, 15:47:18 to 2025-08-14, 18:42:55
+Session: 02:55h
+Loot Type: Leader
+Loot: 7,839,016
+Supplies: 2,310,505
+Balance: 5,528,511
+Faelz ika (Leader)
+    Loot: 3,686,578
+    Supplies: 410,377
+    Balance: 3,276,201
+    Damage: 5,587,893
+    Healing: 781,134
+Indiao
+    Loot: 471,648
+    Supplies: 616,617
+    Balance: -144,969
+    Damage: 6,573,919
+    Healing: 2,371,786
+Kazx
+    Loot: 2,258,764
+    Supplies: 823,687
+    Balance: 1,435,077
+    Damage: 9,140,849
+    Healing: 780,876
+Naboo
+    Loot: 1,422,026
+    Supplies: 459,824
+    Balance: 962,202
+    Damage: 11,756,782
+    Healing: 2,005,016`;
 
 function parsePartyHunt(partyHunt: string): Players[] {
   const lines = partyHunt
@@ -88,7 +118,7 @@ function calculateTransfers(players: Players[]) {
     if (debtor.diff === 0) j++;
   }
 
-  return transfers;
+  return { transfers, avg };
 }
 
 function calculatePlayerDamage(players: Players[]) {
@@ -99,8 +129,10 @@ function calculatePlayerDamage(players: Players[]) {
 
 export function calculatePartyResults(partyHunt: string) {
   const players = parsePartyHunt(partyHunt);
-  const transfers = calculateTransfers(players);
+  const transfersInfo = calculateTransfers(players);
   const playerDamage = calculatePlayerDamage(players);
+  const profit = transfersInfo.avg;
+  const transfers = transfersInfo.transfers;
 
-  return { transfers, playerDamage };
+  return { transfers, playerDamage, profit };
 }
