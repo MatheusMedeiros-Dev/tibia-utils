@@ -1,5 +1,5 @@
 import AppButton from "../components/AppButton";
-import tibiaIcon from "../assets/icon.png";
+import tibiaIcon from "../assets/others/icon.png";
 
 import { useEffect, useRef, useState } from "react";
 
